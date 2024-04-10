@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Identification</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Plant Disease Identification</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="fileInput" accept="image/*" required>
+        <button type="submit">Upload Image</button>
+    </form>
+    <div id="resultContainer" style="display: none;">
+        <h2>Result</h2>
+        <p id="resultText"></p>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            var fileInput = document.getElementById('fileInput');
+            var file = fileInput.files[0];
+            
+            if (!file) {
+                alert('Please select an image file.');
+                return;
+            }
+            
+            var formData = new FormData();
+            formData.append('file', file);
+            
+            fetch('/api/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('resultContainer').style.display = 'block';
+                document.getElementById('resultText').innerText = 'Predicted Disease: ' + data.disease;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>

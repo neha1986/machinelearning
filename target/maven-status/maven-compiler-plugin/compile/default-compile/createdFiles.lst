@@ -1,0 +1,8 @@
+com\plant\disease\identification\machinelearning\Security\SecurityConfig.class
+com\plant\disease\identification\machinelearning\bean\PredictionResult.class
+com\plant\disease\identification\machinelearning\controller\HomeController.class
+com\plant\disease\identification\machinelearning\controller\PlantDiseasePredictionController.class
+com\plant\disease\identification\machinelearning\controller\LoginController.class
+com\plant\disease\identification\machinelearning\service\PlantDiseasePredictionService.class
+com\plant\disease\identification\machinelearning\controller\LogoutController.class
+com\plant\disease\identification\machinelearning\MachinelearningApplication.class
