@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  springboot-container:
+    #build: .
+    image: machinelearning:v1
+    container_name: springboot-container 
+    ports:
+      - 9090:8082
+    restart: always
